@@ -31,9 +31,17 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="viH-NM-iN6"/>
-                                    <barButtonItem systemItem="camera" id="s0p-mt-D9E"/>
+                                    <barButtonItem systemItem="camera" id="s0p-mt-D9E">
+                                        <connections>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="F7g-8R-5PQ"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="100" style="plain" systemItem="fixedSpace" id="kgm-bq-SPR"/>
-                                    <barButtonItem title="Album" id="kwZ-AW-OL4"/>
+                                    <barButtonItem title="Album" id="kwZ-AW-OL4">
+                                        <connections>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="z1x-7K-283"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ley-di-CM3"/>
                                 </items>
                             </toolbar>
@@ -71,6 +79,11 @@
                             <constraint firstItem="QLl-9H-F6B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="uB8-co-oPj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="albumButton" destination="kwZ-AW-OL4" id="jiT-7D-8tK"/>
+                        <outlet property="cameraButton" destination="s0p-mt-D9E" id="saA-TD-Toi"/>
+                        <outlet property="pickedImageView" destination="QLl-9H-F6B" id="qJH-ck-ZWl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
