@@ -76,7 +76,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ZA5-wm-ncL" secondAttribute="trailing" constant="-20" id="4Sw-3m-BLn"/>
                             <constraint firstItem="ZA5-wm-ncL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="5Ap-nv-Hip"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jsG-eA-LmY" secondAttribute="trailing" id="6Et-qF-q2Y"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QLl-9H-F6B" secondAttribute="trailing" constant="-20" id="A4f-cB-gFS"/>
                             <constraint firstItem="0Y9-GY-L5s" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="B9z-g5-GRd"/>
                             <constraint firstAttribute="leadingMargin" secondItem="jsG-eA-LmY" secondAttribute="leading" id="F1Q-pY-6oP"/>
                             <constraint firstItem="QLl-9H-F6B" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="KDq-K4-0vr"/>
@@ -87,9 +86,10 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QLl-9H-F6B" secondAttribute="bottom" id="eJu-N3-WSD"/>
                             <constraint firstItem="u6l-uG-Qz0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jN8-8G-ArN"/>
                             <constraint firstAttribute="leadingMargin" secondItem="u6l-uG-Qz0" secondAttribute="leading" id="l31-fc-7cu"/>
+                            <constraint firstItem="QLl-9H-F6B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oOZ-sR-wsm"/>
+                            <constraint firstAttribute="trailing" secondItem="QLl-9H-F6B" secondAttribute="trailing" id="q8u-lp-nDR"/>
                             <constraint firstItem="jsG-eA-LmY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qsv-6g-ENG"/>
                             <constraint firstItem="0Y9-GY-L5s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rti-Xd-1md"/>
-                            <constraint firstItem="QLl-9H-F6B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="uB8-co-oPj"/>
                         </constraints>
                     </view>
                     <connections>
