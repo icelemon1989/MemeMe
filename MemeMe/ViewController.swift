@@ -15,6 +15,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var topNaviBar: UINavigationBar!
+    @IBOutlet weak var bottomToolBar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var selectedTextField: UITextField!
     
@@ -36,7 +39,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomTextField.delegate = self
         bottomTextField.defaultTextAttributes = memeTextFieldAttributes
         bottomTextField.textAlignment = .Center
-
+        
+        //disable share button before complete image
+        shareButton.enabled = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -125,11 +130,52 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = info[UIImagePickerControllerOriginalImage] {
             pickedImageView.image = image as? UIImage
         }
+        //enbale to share image
+        shareButton.enabled = true
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
+//MARK: Generate Memed Image
+    func generateMemedImage() -> UIImage {
+        //Hide toolbar and navbar
+        topNaviBar.hidden = true
+        bottomToolBar.hidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame,
+                                     afterScreenUpdates: true)
+        let memedImage : UIImage =
+            UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //Show toolbar and navbar
+        topNaviBar.hidden = false
+        bottomToolBar.hidden = false
+        
+        return memedImage
+    }
 
+//MARK: share memedImage
+    
+    @IBAction func shareMeme(sender: UIBarButtonItem) {
+        let memedImage = generateMemedImage()
+        let shareVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        presentViewController(shareVC, animated: true) { 
+            //create the meme and save
+            let meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, image: self.pickedImageView.image!, memedImage: memedImage)
+            print(meme.topText + " " + meme.bottomText)
+        }
+        //self.dismissViewControllerAnimated(true, completion: nil)
+    }
+//MARK: cancel
+
+    @IBAction func cancelPressed(sender: UIBarButtonItem) {
+        pickedImageView.image = UIImage()
+        topTextField.text = "Top"
+        bottomTextField.text = "Bottom"
+        shareButton.enabled = false
+    }
 
 }
 
