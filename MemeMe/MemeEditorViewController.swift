@@ -86,7 +86,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     //When the keyboardWillShow notification is received, shift the view's frame up
     func keyboardWillShow(notification: NSNotification) {
         if selectedTextField == bottomTextField {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = getKeyboardHeight(notification) * (-1)
         }
     }
     //When the keyboardWillhide notification is received, shift the view's frame bakc down
