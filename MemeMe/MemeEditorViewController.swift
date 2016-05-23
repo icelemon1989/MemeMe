@@ -64,7 +64,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        textField.text = ""
+        //clear default text when user use textfield, otherwise remain user's previous text content
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
+        }
         selectedTextField = textField
         return true
     }
@@ -175,8 +178,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 
     @IBAction func cancelPressed(sender: UIBarButtonItem) {
         pickedImageView.image = UIImage()
-        topTextField.text = "Top"
-        bottomTextField.text = "Bottom"
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
         shareButton.enabled = false
     }
 
