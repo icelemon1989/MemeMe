@@ -20,6 +20,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var selectedTextField: UITextField!
+    var memedImage: UIImage!
+    var meme: Meme!
     
 //MARK: Text Field Attributes
     let memeTextFieldAttributes: [String: AnyObject] = [
@@ -165,15 +167,20 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 //MARK: share memedImage
     
     @IBAction func shareMeme(sender: UIBarButtonItem) {
-        let memedImage = generateMemedImage()
+        memedImage = generateMemedImage()
         let shareVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         presentViewController(shareVC, animated: true) { 
-            //create the meme and save
-            let meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originImage: self.pickedImageView.image!, editImage: memedImage)
-            print(meme.topText + " " + meme.bottomText)
+            //save
+            self.saveMeme()
+            print(self.meme.topText + " " + self.meme.bottomText)
         }
-        //self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+//MARK: Save MemeImage
+    func saveMeme() {
+        meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originImage: self.pickedImageView.image!, editImage: memedImage)
+    }
+    
 //MARK: cancel
 
     @IBAction func cancelPressed(sender: UIBarButtonItem) {
