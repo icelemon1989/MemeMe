@@ -169,7 +169,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let shareVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         presentViewController(shareVC, animated: true) { 
             //create the meme and save
-            let meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, image: self.pickedImageView.image!, memedImage: memedImage)
+            let meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originImage: self.pickedImageView.image!, editImage: memedImage)
             print(meme.topText + " " + meme.bottomText)
         }
         //self.dismissViewControllerAnimated(true, completion: nil)
