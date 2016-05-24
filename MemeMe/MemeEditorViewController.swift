@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Yang Ji on 5/19/16.
@@ -169,11 +169,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         memedImage = generateMemedImage()
         let shareVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        presentViewController(shareVC, animated: true) { 
-            //save
-            self.saveMeme()
-            print(self.meme.topText + " " + self.meme.bottomText)
+        shareVC.completionWithItemsHandler = {
+            (activity: String?, completed: Bool, items: [AnyObject]?, error: NSError?) in
+            if completed {
+                self.saveMeme()
+            }
         }
+        presentViewController(shareVC, animated: true, completion: nil)
     }
     
 //MARK: Save MemeImage
