@@ -172,6 +172,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             (activity: String?, completed: Bool, items: [AnyObject]?, error: NSError?) in
             if completed {
                 self.saveMeme()
+                print("shoud save meme")
             }
         }
         presentViewController(shareVC, animated: true, completion: nil)
@@ -184,6 +185,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        print("meme Saved, memes count" + "\(appDelegate.memes.count)")
         
     }
     
