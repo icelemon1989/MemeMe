@@ -21,7 +21,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     var selectedTextField: UITextField!
     var memedImage: UIImage!
-    var meme: Meme!
     
 //MARK: Text Field Attributes
     let memeTextFieldAttributes: [String: AnyObject] = [
@@ -180,7 +179,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
 //MARK: Save MemeImage
     func saveMeme() {
-        meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originImage: self.pickedImageView.image!, editImage: memedImage)
+        let meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originImage: self.pickedImageView.image!, editImage: memedImage)
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        
     }
     
 //MARK: cancel
