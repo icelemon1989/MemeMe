@@ -12,16 +12,12 @@ class SentMemeTableViewController: UITableViewController {
     
     let reuseIdentiferCell = "sentMemeTableViewCell"
     
-    var memes: [Meme]!
+    var memes: [Meme] {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //retrieve the saved meme array
-        let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        memes = applicationDelegate.memes
-        
-
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source

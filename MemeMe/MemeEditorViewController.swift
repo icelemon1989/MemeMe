@@ -173,6 +173,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             if completed {
                 self.saveMeme()
                 print("shoud save meme")
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         presentViewController(shareVC, animated: true, completion: nil)
@@ -196,6 +197,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         shareButton.enabled = false
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
