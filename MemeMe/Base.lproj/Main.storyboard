@@ -135,7 +135,7 @@
                     <navigationItem key="navigationItem" id="ir8-tF-fBQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nTF-kp-F3W">
                             <connections>
-                                <action selector="editBarButtonItemPressed:" destination="F1U-MT-zPa" id="szt-ue-M3v"/>
+                                <action selector="addMemeBarButtonItemPressed:" destination="F1U-MT-zPa" id="bmk-HL-w4H"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,7 +147,7 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="editMemeVC" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addMemeVC" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

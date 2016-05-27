@@ -46,8 +46,8 @@ class SentMemeTableViewController: UITableViewController {
         return cell
     }
 
-    @IBAction func editBarButtonItemPressed(sender: UIBarButtonItem) {
-        let editMemeVC = storyboard?.instantiateViewControllerWithIdentifier("editMemeVC")
-        presentViewController(editMemeVC!, animated: true, completion: nil)
+    @IBAction func addMemeBarButtonItemPressed(sender: UIBarButtonItem) {
+        let addMemeVC = storyboard?.instantiateViewControllerWithIdentifier("addMemeVC")
+        presentViewController(addMemeVC!, animated: true, completion: nil)
     }
 }
