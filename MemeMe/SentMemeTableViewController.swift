@@ -34,17 +34,28 @@ class SentMemeTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentiferCell, forIndexPath: indexPath) as! SentMemeTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentiferCell, forIndexPath: indexPath)
         
         // Configure the cell...
         let meme = memes[indexPath.row]
         
-        cell.tableViewImage.image = meme.editImage
-        cell.tableViewTopLabel.text = meme.topText
-        cell.tabelViewBottomLabel.text = meme.bottomText
+        cell.imageView?.image = meme.editImage
+        cell.textLabel?.text = meme.topText
+        cell.detailTextLabel?.text = meme.bottomText
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailVC = storyboard?.instantiateViewControllerWithIdentifier("detailVC") as! MemeDetailViewController
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        detailVC.detailImageView.image = selectedCell!.imageView?.image
+
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    // MARK: - Navigation bar button item
 
     @IBAction func addMemeBarButtonItemPressed(sender: UIBarButtonItem) {
         let addMemeVC = storyboard?.instantiateViewControllerWithIdentifier("addMemeVC")
