@@ -21,6 +21,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     var selectedTextField: UITextField!
     var memedImage: UIImage!
+    var passedMeme: Meme!
     
 //MARK: Text Field Attributes
     let memeTextFieldAttributes: [String: AnyObject] = [
@@ -39,6 +40,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         //disable share button before complete image
         shareButton.enabled = false
+        
+        //pass meme from selected row from table view or collective view
+        if let meme = passedMeme {
+            pickedImageView.image = meme.originImage
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+            shareButton.enabled = true
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -172,8 +181,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             (activity: String?, completed: Bool, items: [AnyObject]?, error: NSError?) in
             if completed {
                 self.saveMeme()
-                print("shoud save meme")
-                self.dismissViewControllerAnimated(true, completion: nil)
+                //print("should save meme")
+                self.presentHistoryTableVC()
             }
         }
         presentViewController(shareVC, animated: true, completion: nil)
@@ -193,11 +202,19 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 //MARK: cancel
 
     @IBAction func cancelPressed(sender: UIBarButtonItem) {
-        pickedImageView.image = UIImage()
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        shareButton.enabled = false
-        dismissViewControllerAnimated(true, completion: nil)
+//        pickedImageView.image = UIImage()
+//        topTextField.text = "TOP"
+//        bottomTextField.text = "BOTTOM"
+//        shareButton.enabled = false
+//        dismissViewControllerAnimated(true, completion: nil)
+        presentHistoryTableVC()
+    }
+//MARK: Hepler
+    //present back to table view controller to show history sented meme
+    func presentHistoryTableVC() {
+        let tableVC = storyboard?.instantiateViewControllerWithIdentifier("SentMemeTableVC")
+        let navigationVC = UINavigationController(rootViewController: tableVC!)
+        presentViewController(navigationVC, animated: true, completion: nil)
     }
 
 }
