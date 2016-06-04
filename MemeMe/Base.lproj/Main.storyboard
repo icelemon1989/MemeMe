@@ -62,7 +62,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMK-Bz-uOi">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mMK-Bz-uOi">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         </imageView>
                                     </subviews>
@@ -71,8 +71,8 @@
                                 <constraints>
                                     <constraint firstItem="mMK-Bz-uOi" firstAttribute="top" secondItem="EbH-7D-WY3" secondAttribute="top" id="2kh-qi-DB8"/>
                                     <constraint firstItem="mMK-Bz-uOi" firstAttribute="leading" secondItem="EbH-7D-WY3" secondAttribute="leading" id="7sg-bs-SM5"/>
-                                    <constraint firstAttribute="bottom" secondItem="mMK-Bz-uOi" secondAttribute="bottom" id="FsF-vV-J1T"/>
-                                    <constraint firstAttribute="trailing" secondItem="mMK-Bz-uOi" secondAttribute="trailing" id="ly3-ZZ-YFM"/>
+                                    <constraint firstAttribute="bottom" secondItem="mMK-Bz-uOi" secondAttribute="bottom" constant="20" id="FsF-vV-J1T"/>
+                                    <constraint firstAttribute="trailing" secondItem="mMK-Bz-uOi" secondAttribute="trailing" constant="20" id="ly3-ZZ-YFM"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="mMK-Bz-uOi" id="xef-om-gSP"/>
@@ -84,7 +84,13 @@
                             <outlet property="delegate" destination="Lza-md-UzE" id="xcS-Bt-EQ1"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="XV0-sE-Jvg"/>
+                    <navigationItem key="navigationItem" id="XV0-sE-Jvg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oYH-FF-77c">
+                            <connections>
+                                <action selector="pressAddBarButton:" destination="Lza-md-UzE" id="l0s-vf-QFm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="scr-7K-pzL" id="4UA-hl-I46"/>
                     </connections>

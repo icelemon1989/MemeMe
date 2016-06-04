@@ -60,4 +60,11 @@ class SentMemeCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    //MARK: Turn to EditMemeViewController
+
+    @IBAction func pressAddBarButton(sender: UIBarButtonItem) {
+        let addMemeVC = storyboard?.instantiateViewControllerWithIdentifier("addMemeVC")
+        presentViewController(addMemeVC!, animated: true, completion: nil)
+    }
+    
 }
