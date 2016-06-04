@@ -12,6 +12,8 @@ private let reuseIdentifier = "SentMemeCollectiveCell"
 
 class SentMemeCollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
@@ -19,8 +21,15 @@ class SentMemeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //flow layout
+        let space: CGFloat = 3.0
+        let dimension = view.frame.size.width - (2*space) / 3.0
+        
+        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        
+        
 
     }
     
