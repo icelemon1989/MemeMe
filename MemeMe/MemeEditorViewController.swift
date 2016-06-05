@@ -212,9 +212,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 //MARK: Hepler
     //present back to table view controller to show history sented meme
     func presentHistoryTableVC() {
-        let tableVC = storyboard?.instantiateViewControllerWithIdentifier("SentMemeTableVC")
-        let navigationVC = UINavigationController(rootViewController: tableVC!)
-        presentViewController(navigationVC, animated: true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
+//        let tableVC = storyboard?.instantiateViewControllerWithIdentifier("SentMemeTableVC")
+//        navigationController?.pushViewController(tableVC!, animated: true)
+//        let rootVC = storyboard?.instantiateViewControllerWithIdentifier("rootTabBarController")
+//        let navigationVC = UINavigationController(rootViewController: rootVC!)
+//        presentViewController(navigationVC, animated: true, completion: nil)
     }
 
 }

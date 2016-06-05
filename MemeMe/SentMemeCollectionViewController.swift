@@ -59,6 +59,14 @@ class SentMemeCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
+    //select item sent to the matched detail view controller
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let meme = memes[indexPath.item]
+        let detailVC = storyboard?.instantiateViewControllerWithIdentifier("detailVC") as! MemeDetailViewController
+        detailVC.meme = meme
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 
     //MARK: Turn to EditMemeViewController
 
