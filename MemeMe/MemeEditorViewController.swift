@@ -181,8 +181,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             (activity: String?, completed: Bool, items: [AnyObject]?, error: NSError?) in
             if completed {
                 self.saveMeme()
-                //print("should save meme")
-                self.presentHistoryTableVC()
+                shareVC.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         presentViewController(shareVC, animated: true, completion: nil)
@@ -195,30 +195,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        print("meme Saved, memes count" + "\(appDelegate.memes.count)")
+        //print("meme Saved, memes count" + "\(appDelegate.memes.count)")
         
     }
     
 //MARK: cancel
 
     @IBAction func cancelPressed(sender: UIBarButtonItem) {
-//        pickedImageView.image = UIImage()
-//        topTextField.text = "TOP"
-//        bottomTextField.text = "BOTTOM"
-//        shareButton.enabled = false
-//        dismissViewControllerAnimated(true, completion: nil)
-        presentHistoryTableVC()
-    }
-//MARK: Hepler
-    //present back to table view controller to show history sented meme
-    func presentHistoryTableVC() {
         dismissViewControllerAnimated(true, completion: nil)
-//        let tableVC = storyboard?.instantiateViewControllerWithIdentifier("SentMemeTableVC")
-//        navigationController?.pushViewController(tableVC!, animated: true)
-//        let rootVC = storyboard?.instantiateViewControllerWithIdentifier("rootTabBarController")
-//        let navigationVC = UINavigationController(rootViewController: rootVC!)
-//        presentViewController(navigationVC, animated: true, completion: nil)
     }
+
 
 }
 
