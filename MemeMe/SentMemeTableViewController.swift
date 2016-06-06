@@ -46,6 +46,7 @@ class SentMemeTableViewController: UITableViewController {
         return cell
     }
     
+    //select the cell transfer to detail view controller
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let meme = memes[indexPath.row]
         let detailVC = storyboard?.instantiateViewControllerWithIdentifier("detailVC") as! MemeDetailViewController
@@ -55,10 +56,27 @@ class SentMemeTableViewController: UITableViewController {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    //delete row
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            print(indexPath.row)
+            removeMemeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+
     // MARK: - Navigation bar button item
 
     @IBAction func addMemeBarButtonItemPressed(sender: UIBarButtonItem) {
         let addMemeVC = storyboard?.instantiateViewControllerWithIdentifier("addMemeVC")
         presentViewController(addMemeVC!, animated: true, completion: nil)
+    }
+    
+    //MARK: Helper
+    //TODO: removeMEME
+    func removeMemeAtIndex(index: Int) {
+        let object = UIApplication.sharedApplication().delegate as! AppDelegate
+        object.memes.removeAtIndex(index)
+        //memes.removeAtIndex(index)
     }
 }
