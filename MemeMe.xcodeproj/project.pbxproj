@@ -115,7 +115,7 @@
 				C49514E11D00EF630046ABFA /* MemeDetailViewController.swift */,
 				C4EE5E8B1D05499600DD5054 /* Collective View */,
 				C4EE5E8C1D0549BD00DD5054 /* Table View */,
-				C4C993841CEFE147006DD8A6 /* Meme.swift */,
+				C4EE5E901D0669C700DD5054 /* Model */,
 				C4C9935D1CEEB6FC006DD8A6 /* Assets.xcassets */,
 				C4C9935F1CEEB6FC006DD8A6 /* LaunchScreen.storyboard */,
 				C4C993621CEEB6FC006DD8A6 /* Info.plist */,
@@ -157,6 +157,14 @@
 				C49514D91CF7AF610046ABFA /* SentMemeTableViewController.swift */,
 			);
 			name = "Table View";
+			sourceTree = "<group>";
+		};
+		C4EE5E901D0669C700DD5054 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4C993841CEFE147006DD8A6 /* Meme.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

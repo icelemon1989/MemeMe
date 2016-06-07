@@ -21,7 +21,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     ]
     
     //TODO: adjust flowlayout
-    //@IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var collectiveflowLayout: UICollectionViewFlowLayout!
     
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
@@ -31,14 +31,13 @@ class SentMemeCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         
-//        //flow layout
-//        let space: CGFloat = 3.0
-//        let itemWidth = view.frame.size.width - (2*space) / 3.0
-//        
-//        
-//        flowLayout.minimumLineSpacing = space
-//        flowLayout.minimumInteritemSpacing = space
-//        flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth)
+        //flow layout
+        let space: CGFloat = 3.0
+        let dimension = (self.view.frame.size.width - (2*space)) / 3.0
+        
+        collectiveflowLayout.minimumLineSpacing = space
+        collectiveflowLayout.minimumInteritemSpacing = space
+        collectiveflowLayout.itemSize = CGSizeMake(dimension, dimension)
         
         
 

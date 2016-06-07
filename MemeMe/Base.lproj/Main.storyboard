@@ -109,6 +109,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectiveflowLayout" destination="scr-7K-pzL" id="dPf-fA-OMW"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHc-OY-WAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
