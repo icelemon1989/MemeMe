@@ -12,8 +12,8 @@ private let reuseIdentifier = "SentMemeCollectiveCell"
 
 class SentMemeCollectionViewController: UICollectionViewController {
     
-//    //TODO: adjust flowlayout
-//    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    //TODO: adjust flowlayout
+    //@IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
@@ -24,11 +24,12 @@ class SentMemeCollectionViewController: UICollectionViewController {
 
 //        //flow layout
 //        let space: CGFloat = 3.0
-//        let dimension = view.frame.size.width - (2*space) / 3.0
+//        let itemWidth = view.frame.size.width - (2*space) / 3.0
+//        
 //        
 //        flowLayout.minimumLineSpacing = space
 //        flowLayout.minimumInteritemSpacing = space
-//        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+//        flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth)
         
         
 
@@ -56,7 +57,10 @@ class SentMemeCollectionViewController: UICollectionViewController {
         
     
         // Configure the cell
-        cell.imageView.image = memes[indexPath.item].editImage
+        let meme = memes[indexPath.item]
+        cell.imageView.image = meme.originImage
+        cell.top.text = meme.topText
+        cell.bottom.text = meme.bottomText
         
         return cell
     }

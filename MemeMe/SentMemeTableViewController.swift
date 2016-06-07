@@ -10,6 +10,14 @@ import UIKit
 
 class SentMemeTableViewController: UITableViewController {
     
+    let memeLabelTextAttributes: [String: AnyObject] = [
+        NSStrokeColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor.whiteColor(),
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 18)!,
+        NSStrokeWidthAttributeName: CGFloat(-4.0)
+        
+    ]
+    
     private let reuseIdentiferCell = "sentMemeTableViewCell"
     
     var memes: [Meme] {
@@ -34,14 +42,19 @@ class SentMemeTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentiferCell, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentiferCell, forIndexPath: indexPath) as! SentMemeTableViewCell
         
         // Configure the cell...
         let meme = memes[indexPath.row]
         
-        cell.imageView?.image = meme.editImage
-        cell.textLabel?.text = meme.topText
-        cell.detailTextLabel?.text = meme.bottomText
+        cell.memeImageView.image = meme.originImage
+        cell.memeTopLabel.text = meme.topText
+        cell.memeBottonLabel.text = meme.bottomText
+        cell.messageLabel.text = "\(meme.topText) \(meme.bottomText)"
+        
+        self.configureCellLabel(cell.memeTopLabel)
+        self.configureCellLabel(cell.memeBottonLabel)
+        
         
         return cell
     }
@@ -78,5 +91,10 @@ class SentMemeTableViewController: UITableViewController {
         let object = UIApplication.sharedApplication().delegate as! AppDelegate
         object.memes.removeAtIndex(index)
         //memes.removeAtIndex(index)
+    }
+    
+    func configureCellLabel(label: UILabel) {
+        let attributeString = NSMutableAttributedString(string: label.text!, attributes: memeLabelTextAttributes)
+        label.attributedText = attributeString
     }
 }
