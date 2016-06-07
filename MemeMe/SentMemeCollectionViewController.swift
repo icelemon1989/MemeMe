@@ -12,6 +12,14 @@ private let reuseIdentifier = "SentMemeCollectiveCell"
 
 class SentMemeCollectionViewController: UICollectionViewController {
     
+    let memeLabelTextAttributes: [String: AnyObject] = [
+        NSStrokeColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor.whiteColor(),
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 18)!,
+        NSStrokeWidthAttributeName: CGFloat(-4.0)
+        
+    ]
+    
     //TODO: adjust flowlayout
     //@IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
@@ -22,6 +30,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
 //        //flow layout
 //        let space: CGFloat = 3.0
 //        let itemWidth = view.frame.size.width - (2*space) / 3.0
@@ -37,6 +46,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         collectionView?.reloadData()
+        
+        collectionView?.backgroundColor = UIColor.whiteColor()
     }
 
     // MARK: UICollectionViewDataSource
@@ -62,6 +73,9 @@ class SentMemeCollectionViewController: UICollectionViewController {
         cell.top.text = meme.topText
         cell.bottom.text = meme.bottomText
         
+        self.configureCellLabel(cell.top)
+        self.configureCellLabel(cell.bottom)
+        
         return cell
     }
     
@@ -78,6 +92,13 @@ class SentMemeCollectionViewController: UICollectionViewController {
     @IBAction func pressAddBarButton(sender: UIBarButtonItem) {
         let addMemeVC = storyboard?.instantiateViewControllerWithIdentifier("addMemeVC")
         presentViewController(addMemeVC!, animated: true, completion: nil)
+    }
+    
+    //MARK: Helper
+    //configure the label attribute in cell
+    func configureCellLabel(label: UILabel) {
+        let attributeString = NSMutableAttributedString(string: label.text!, attributes: memeLabelTextAttributes)
+        label.attributedText = attributeString
     }
     
 }
