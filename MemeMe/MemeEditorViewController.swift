@@ -51,6 +51,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         //check if camera device availabe
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         
@@ -61,8 +62,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         //unsign to be notified when keyboard dismiss
         unsubscribeToKeyboardShowNotification()
+        unsubscribeToKeyboardHideNotification()
+    
     }
     
 //MARK: Text Field configure
@@ -126,6 +130,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func subscribToKeyboardHideNotification() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
+    
+    //subscribe to keyboard hide notification
+    func unsubscribeToKeyboardHideNotification() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
 
 //MARK: Select Image
     
@@ -138,7 +147,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         } else {
             imageVC.sourceType = .PhotoLibrary
         }
-        self.presentViewController(imageVC, animated: true, completion: nil)
+        presentViewController(imageVC, animated: true, completion: nil)
     }
   
     //show image on ImageView

@@ -19,10 +19,10 @@ class MemeDetailViewController: UIViewController {
         //load meme image
         detailImageView.image = meme.editImage
         
-        navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(MemeDetailViewController.addButtonPressed(_:)))
+        navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(MemeDetailViewController.editMemeButtonPressed(_:)))
     }
     
-    func addButtonPressed(sender: UIBarButtonItem) {
+    func editMemeButtonPressed(sender: UIBarButtonItem) {
         let addMemeVC = storyboard?.instantiateViewControllerWithIdentifier("addMemeVC") as! MemeEditorViewController
         addMemeVC.passedMeme = meme
         presentViewController(addMemeVC, animated: true, completion: nil)

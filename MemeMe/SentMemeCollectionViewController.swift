@@ -38,8 +38,6 @@ class SentMemeCollectionViewController: UICollectionViewController {
         collectiveflowLayout.minimumLineSpacing = space
         collectiveflowLayout.minimumInteritemSpacing = space
         collectiveflowLayout.itemSize = CGSizeMake(dimension, dimension)
-        
-        
 
     }
     
